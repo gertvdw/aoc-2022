@@ -1,5 +1,11 @@
-; solution for day 1, part 1
+; Solution for day 1, part 1
 ; in 6502 assembly
+; 
+; Go to https://skilldrick.github.io/easy6502/
+; and paste this code into a program box.
+; Press 'assemble' and then 'run'.
+; The solution is at address $00 and $01
+; (Execution takes a while...)
 
 define SCORE_LOW $00
 define SCORE_HI $01
