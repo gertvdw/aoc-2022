@@ -1,7 +1,7 @@
 """
 Quick and dirty.
-"""
 
+"""
 
 with open("inputs/day8.txt") as f:
   rows = [line.strip() for line in f.readlines()]
@@ -21,9 +21,9 @@ def scenic_scores(scenery):
             column = [c[j] for c in scenery]
             c = (column[0:i][::-1], column[i+1::], scenery[i][0:j][::-1], scenery[i][j+1::])
             score = 1
-            for _ in c:
-                if len(_) > 0:
-                    tf = [w >= scenery[i][j] for w in _]
+            for whatever in c:
+                if len(whatever) > 0:
+                    tf = [w >= scenery[i][j] for w in whatever]
                     if True in tf:
                         score *= (tf.index(True) + 1)
                     else:
@@ -57,3 +57,9 @@ for line in display:
   print(line)
 
 scores = scenic_scores(rows)
+
+# Uncomment this to show a useless heatmap
+# import seaborn
+# import matplotlib.pyplot as plt
+# heatmap = seaborn.heatmap(data = scores)
+# plt.show()
