@@ -39,7 +39,6 @@ for (const pair of pairs) {
   workingPairs.push(parts);
 }
 
-console.log(compareLists(workingPairs[6][0], workingPairs[6][1]));
 const orderedPairs = workingPairs.map(([left, right]) =>
   compareLists(left, right)
 );
@@ -47,5 +46,20 @@ const sumOfOrderedPairs = orderedPairs.reduce(
   (sum, result, idx) => sum + (result === true ? idx + 1 : 0),
   0
 );
-
+const sortPackets = (a, b) => {
+  const r = compareLists(a, b);
+  if (r === null) return 0;
+  return r ? -1 : 1;
+};
 console.log(`p1: ${sumOfOrderedPairs}`);
+
+const sep = [[[2]], [[6]]];
+const sepStr = sep.map((s) => JSON.stringify(s));
+const allPackets = [...workingPairs.flatMap((pair) => pair), ...sep];
+
+const sortedPackets = allPackets.sort(sortPackets);
+const decoderKey = sortedPackets.reduce(
+  (acc, v, i) => acc * (sepStr.includes(JSON.stringify(v)) ? i + 1 : 1),
+  1
+);
+console.log(`p2: ${decoderKey}`);
